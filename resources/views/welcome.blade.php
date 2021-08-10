@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Hostel Managment
                 </div>
 
                 <div class="links">
@@ -92,7 +92,7 @@
                     <a href="/meals/create">Create meals Prices</a>
                     <a href="/order/view">Order</a>
                     <a href="/order/report">Order Report</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="https://github.com/shakil10sk/Hostel-Managment">GitHub</a>
                 </div>
             </div>
         </div>

@@ -24,19 +24,26 @@ Route::prefix('border')->group(function () {
     Route::get('/create','BorderController@create');
     Route::post('/store/','BorderController@store');
     Route::get('/view/','BorderController@index');
+    Route::get('/edit/{id}','BorderController@edit');
+    Route::post('/update/{id}','BorderController@update');
+    Route::get('/delete/{id}','BorderController@destroy');
 });
 // for room
 Route::prefix('room')->group(function () {
     Route::get('/create','RoomController@create');
     Route::post('/store','RoomController@store');
     Route::get('/view/','RoomController@index');
+    Route::get('/edit/{id}','RoomController@edit');
+    Route::post('/update/{id}','RoomController@update');
+    Route::get('/delete/{id}','RoomController@destroy');
 });
 // for meals
 Route::prefix('meals')->group(function () {
     Route::get('/create','MealController@create');
     Route::post('/store','MealController@store');
-    Route::get('/{id}/edit','MealController@edit');
-    Route::post('/{id}/','MealController@update');
+    Route::get('/view','MealController@index');
+    Route::get('/edit/{id}','MealController@edit');
+    Route::post('/update/{id}/','MealController@update');
     Route::get('/{id}/delete','MealController@destroy');
 });
 

@@ -10,11 +10,71 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <body>
+    {{-- navber section --}}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center mx-auto">
 
-    <h2>Border list View</h2>
-    <h4><a href="/">Home</a></h4>
+                <nav class="navbar navbar-expand-lg navbar-info bg-dark">
+                    {{-- <a class="navbar-brand" href="/">Public Hostel</a> --}}
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/border/create"><span
+                                        class="text-uppercase font-weight-bolder">Border Registraion</span></a></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/border/view"><span
+                                        class="text-uppercase font-weight-bolder">Border View</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/room/create"><span
+                                        class="text-uppercase font-weight-bolder">New Room ADD</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/room/view"><span
+                                        class="text-uppercase font-weight-bolder">View Room</span> </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/meals/create"><span
+                                        class="text-uppercase font-weight-bolder">ADD Meals</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/meals/view"><span
+                                        class="text-uppercase font-weight-bolder">View Meals</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/order/view"><span
+                                        class="text-uppercase font-weight-bolder">Order Meal</span></a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="/order/report"><span
+                                        class="text-uppercase font-weight-bolder">Your Order Report</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+
+            </div>
+        </div>
+    </div>
+    {{-- end Navbar --}}
+
+
+
 
     <div class="conatainer p-lg-5">
+        <h2>Room list View</h2>
 
         <table class="table-striped table table-responsive">
             <thead>
@@ -30,7 +90,7 @@
                 <td>{{ $value->room_num }}</td>
                 <td>{{ $value->floor_num }}</td>
                 <td>{{ $value->status }}</td>
-                <td>Edit | Delete</td>
+                <td><a href="{{ URL::to('room/edit/'.$value->id) }}">Edit</a> | <a href="{{ URL::to('room/delete/'.$value->id) }}">Delete</a></td>
             </tbody>
             @endforeach
         </table>

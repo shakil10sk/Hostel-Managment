@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <body>
@@ -71,48 +70,32 @@
 </div>
 {{-- end Navbar --}}
 
-
-<div class="container">
-
-    <h3 class="text-center">Order Report</h3>
-
-    <div class="row">
-        <div class="col-md-12 text-center mx-auto">
-
-            <table class="table table-striped table-bordered">
-                <thead>
-                    <th>Border Name</th>
-                    <th>Order Date</th>
-                    <th>Total Meal</th>
-                    <th> Total Cost</th>
-                    <th>Payment ammount</th>
-                    <th>Due ammount</th>
-                </thead>
-                @foreach($report as $key => $value)
-                <tbody>
-
-                        <td>{{ $value->name }}</td>
-                        <td>{{ $value->order_date }}</td>
-                        <td>{{ $value->total_meal }}</td>
-                        <td> {{ $value->sub_total }}</td>
-                        <td>{{ $value->pay }}</td>
-                        <td>{{ $value->due }}</td>
-
-                </tbody>
-                @endforeach
-            </table>
-
-
+    <div class="container pt-5">
+        <h4>View Meals Details</h4>
+        <div class="row">
+            <div class="col-md-12 mx-auto text-center">
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <th>SI</th>
+                        <th>Meal Name</th>
+                        <th>Meal Price</th>
+                        <th>Action</th>
+                    </thead>
+                    @foreach($meal_view as $key => $value)
+                    <tbody>
+                        <td>{{ ++$key }}</td>
+                        <td>{{ $value->meal_name }}</td>
+                        <td>{{ $value->meal_price }}</td>
+                        <td>
+                            <a href="{{ URL::to('meals/edit/'.$value->id) }}">Edit</a>  |
+                            <a href="/meals/{{ $value->id }}/delete">Delete</a>
+                        </td>
+                    </tbody>
+                    @endforeach
+                </table>
+            </div>
         </div>
     </div>
-
-</div>
-
-
-
-
-
-
 
 
     <!-- Optional JavaScript -->

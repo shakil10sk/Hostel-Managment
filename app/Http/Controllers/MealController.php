@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Meal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
-
+use DB;
 class MealController extends Controller
 {
     /**
@@ -15,7 +15,8 @@ class MealController extends Controller
      */
     public function index()
     {
-
+        $meal_view=Meal::all();
+        return view('frontend.meals.view',compact('meal_view'));
     }
 
     /**
@@ -25,8 +26,8 @@ class MealController extends Controller
      */
     public function create()
     {
-        $view=Meal::all();
-        return view('frontend.meals.create',compact('view'));
+        // $view=Meal::all();
+        return view('frontend.meals.create');
     }
 
     /**
@@ -66,8 +67,8 @@ class MealController extends Controller
      */
     public function edit($id)
     {
-        $edit=Meal::find($id);
-        return view('frontend.meals.edit',compact('edit'));
+        $meal_edit=DB::table('meals')->where('id',$id)->first();
+        return view('frontend.meals.edit',compact('meal_edit'));
     }
 
     /**
@@ -79,20 +80,13 @@ class MealController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-        $update=Meal::find($id);
-        // dd($update);
-        $update->meal_name=$request->meal_name;
-        $update->meal_price=$request->meal_price;
-        $update->save();
-        return Redirect('/meals/create');
-        // dd($update);
-        // if($update->save()){
-        //     return redirect()->back()->with('success','Successfully Meals  Added');
-        // }else{
-        //     return redirect()->back()->with('error','Somtheing is Wrong .Please give information again');
-        // }
-
+        $data=array();
+        $data['meal_name']=$request->meal_name;
+        $data['meal_price']=$request->meal_price;
+        $update=DB::table('meals')->where('id',$id)->update($data);
+        if($update){
+            return Redirect('/meals/view');
+        }
     }
 
     /**

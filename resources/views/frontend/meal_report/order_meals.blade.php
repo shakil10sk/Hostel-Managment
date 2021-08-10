@@ -14,7 +14,67 @@
 </head>
 
 <body>
-    <h4><a href="/">Home</a></h4>
+     {{-- navber section --}}
+     <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center mx-auto">
+
+                <nav class="navbar navbar-expand-lg navbar-info bg-dark">
+                    {{-- <a class="navbar-brand" href="/">Public Hostel</a> --}}
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/border/create"><span
+                                        class="text-uppercase font-weight-bolder">Border Registraion</span></a></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/border/view"><span
+                                        class="text-uppercase font-weight-bolder">Border View</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/room/create"><span
+                                        class="text-uppercase font-weight-bolder">New Room ADD</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/room/view"><span
+                                        class="text-uppercase font-weight-bolder">View Room</span> </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/meals/create"><span
+                                        class="text-uppercase font-weight-bolder">ADD Meals</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/meals/view"><span
+                                        class="text-uppercase font-weight-bolder">View Meals</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/order/view"><span
+                                        class="text-uppercase font-weight-bolder">Order Meal</span></a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="/order/report"><span
+                                        class="text-uppercase font-weight-bolder">Your Order Report</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+
+            </div>
+        </div>
+    </div>
+    {{-- end Navbar --}}
+    <div class="container pt-4">
+        
     <div class="pb-5">
         <div class="row  pb-5">
             <div class="col-md-12 text-center bg-info">
@@ -45,9 +105,7 @@
                                     <tr>
                                         <td class="text-center">{{ $meal->name }}</td>
                                         <td class="text-center">
-                                            <form
-                                                action="{{ url('/cart-update/'.$meal->rowId ) }}"
-                                                method="POST">
+                                            <form action="{{ url('/cart-update/'.$meal->rowId ) }}" method="POST">
                                                 @csrf
                                                 <input type="number" name="qty" value="{{ $meal->qty }}"
                                                     style="width: 50px">
@@ -95,8 +153,6 @@
                                     @endforeach
                                 </select>
                             </div>
-                            {{-- <input type="hidden" name="border_id" value="{{ $border->id }}"> --}}
-
                             <button type="submit" class="btn btn-success ">Create Invoice</button>
                         </form>
                     </div>
@@ -104,7 +160,7 @@
                 </div>
             </div>
 
-
+{{-- Meal Details --}}
             <div class="col-md-6">
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -153,6 +209,7 @@
     </div>
 
 
+    </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

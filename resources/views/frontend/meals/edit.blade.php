@@ -10,6 +10,66 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <body>
+         {{-- navber section --}}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center mx-auto">
+
+                <nav class="navbar navbar-expand-lg navbar-info bg-dark">
+                    {{-- <a class="navbar-brand" href="/">Public Hostel</a> --}}
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/border/create"><span
+                                        class="text-uppercase font-weight-bolder">Border Registraion</span></a></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/border/view"><span
+                                        class="text-uppercase font-weight-bolder">Border View</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/room/create"><span
+                                        class="text-uppercase font-weight-bolder">New Room ADD</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/room/view"><span
+                                        class="text-uppercase font-weight-bolder">View Room</span> </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/meals/create"><span
+                                        class="text-uppercase font-weight-bolder">ADD Meals</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/meals/view"><span
+                                        class="text-uppercase font-weight-bolder">View Meals</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/order/view"><span
+                                        class="text-uppercase font-weight-bolder">Order Meal</span></a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="/order/report"><span
+                                        class="text-uppercase font-weight-bolder">Your Order Report</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+
+            </div>
+        </div>
+    </div>
+    {{-- end Navbar --}}
+
 
     <h1> New Room ADD</h1>
     <h4><a href="/">Home</a></h4>
@@ -27,25 +87,25 @@
                         {{ Session::get('error') }}
                     </div>
             @endif
-            <form action="meals/{{ $edit->id }}/" method="POST">
+           <form action="{{ url('meals/update/'.$meal_edit->id) }}" method="post">
                 @csrf
                 <div class="row">
                     <div class="col-md-12 text-center mx-auto">
                         <div>
                             <label for="meal_name">Meal name</label>
-                            <input type="text" id="meal_name" name="meal_name" value="{{ $edit->meal_name }}">
+                            <input type="text" id="meal_name" name="meal_name" value="{{ $meal_edit->meal_name }}">
                         </div>
                         <br>
                         <div>
                             <label for="meal_price">Meal Price</label>
-                            <input type="text" id="meal_price" name="meal_price" value="{{ $edit->meal_price }}">
+                            <input type="text" id="meal_price" name="meal_price" value="{{ $meal_edit->meal_price }}">
                         </div>
                         <br>
                     </div>
                 </div>
                 <div class=" text-center">
-                    <button type="submit" class="btn btn-sm btn-success" value="update">Update</button>
-                    
+                    <input type="submit" class="text-center" value="update">
+
                 </div>
             </form>
         </div>

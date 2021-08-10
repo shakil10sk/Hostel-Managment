@@ -10,12 +10,70 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <body>
+       {{-- navber section --}}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center mx-auto">
 
-    <h1> New Room ADD</h1>
-    <h4><a href="/">Home</a></h4>
-    <h4><a href="/room/view">Room View</a></h4>
+                <nav class="navbar navbar-expand-lg navbar-info bg-dark">
+                    {{-- <a class="navbar-brand" href="/">Public Hostel</a> --}}
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/border/create"><span
+                                        class="text-uppercase font-weight-bolder">Border Registraion</span></a></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/border/view"><span
+                                        class="text-uppercase font-weight-bolder">Border View</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/room/create"><span
+                                        class="text-uppercase font-weight-bolder">New Room ADD</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/room/view"><span
+                                        class="text-uppercase font-weight-bolder">View Room</span> </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/meals/create"><span
+                                        class="text-uppercase font-weight-bolder">ADD Meals</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/meals/view"><span
+                                        class="text-uppercase font-weight-bolder">View Meals</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/order/view"><span
+                                        class="text-uppercase font-weight-bolder">Order Meal</span></a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="/order/report"><span
+                                        class="text-uppercase font-weight-bolder">Your Order Report</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+
+            </div>
+        </div>
+    </div>
+    {{-- end Navbar --}}
+
+
 
     <div class="conatainer p-lg-5">
+        <h1 class="text-center">Add Meals Details</h1>
         <div>
             @if(Session::get('success'))
                     <div class="alert alert-success">
@@ -47,28 +105,6 @@
                     <input class="text-center" type="submit" value="submit">
                 </div>
             </form>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 mx-auto text-center">
-                <table class="table table-striped table-bordered">
-                    <thead>
-                        <th>SI</th>
-                        <th>Meal Name</th>
-                        <th>Meal Price</th>
-                        <th>Action</th>
-                    </thead>
-                    @foreach($view as $key => $value)
-                    <tbody>
-                        <td>{{ ++$key }}</td>
-                        <td>{{ $value->meal_name }}</td>
-                        <td>{{ $value->meal_price }}</td>
-                        <td><a href="/meals/{{ $value->id }}/edit">Edit</a>  | <a href="/meals/{{ $value->id }}/delete">Delete</a></td>
-                    </tbody>
-                    @endforeach
-                </table>
-            </div>
         </div>
     </div>
 

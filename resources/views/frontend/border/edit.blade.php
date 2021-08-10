@@ -13,8 +13,8 @@
 </head>
 
 <body>
-    {{-- navber section --}}
-    <div class="container">
+     {{-- navber section --}}
+     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center mx-auto">
 
@@ -73,6 +73,9 @@
     </div>
     {{-- end Navbar --}}
 
+    <h1>Border Information Update</h1>
+    <h4><a href="/">Home</a></h4>
+
     <div class="conatainer p-lg-5">
         <div>
             @if(Session::get('success'))
@@ -85,33 +88,34 @@
                     {{ Session::get('error') }}
                 </div>
             @endif
-            <form action="/border/store" method="post" enctype="multipart/form-data">
+            <form action="{{ url('border/update/'.$border_edit->id) }}" method="post"
+                enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col-md-6 text-center mx-auto">
                         <div>
                             <label for="name">Name</label>
-                            <input type="text" name="name" placeholder="Enter Name">
+                            <input type="text" name="name" value="{{ $border_edit->name }}">
                         </div>
                         <br>
                         <div>
                             <label for="your_phone">Phone number</label>
-                            <input type="text" name="your_phone" placeholder="Enter your_phone number">
+                            <input type="text" name="your_phone" value="{{ $border_edit->your_phone }}">
                         </div>
                         <br>
                         <div>
                             <label for="father_name">Father Name</label>
-                            <input type="text" name="father_name" placeholder="Enter father_name">
+                            <input type="text" name="father_name" value="{{ $border_edit->father_name }}">
                         </div>
                         <br>
                         <div>
                             <label for="father_phone">Father phone</label>
-                            <input type="text" name="father_phone" placeholder="Enter father_phone">
+                            <input type="text" name="father_phone" value="{{ $border_edit->father_phone }}">
                         </div>
                         <br>
                         <div>
                             <label for="email">Email</label>
-                            <input type="email" name="email" placeholder="Enter email">
+                            <input type="email" name="email" value="{{ $border_edit->email }}">
                         </div>
                         <br>
                     </div>
@@ -119,26 +123,29 @@
                     <div class="col-md-6 text-center mx-auto">
                         <div>
                             <label for="address">address</label>
-                            <textarea type="text" name="address" placeholder="Enter address"></textarea>
+                            <textarea type="text" name="address">{{ $border_edit->address }}</textarea>
                         </div>
                         <br>
                         <div>
                             <label for="name">Photo</label>
-                            <input type="file" name="photo">
+                            <input type="file" name="photo" value="{{ $border_edit->photo }}">
                         </div>
                         <br>
                         <div>
                             <label for="nid_number">Nid Number</label>
-                            <input type="text" name="nid_number" placeholder="Enter nid_number">
+                            <input type="text" name="nid_number" value="{{ $border_edit->nid_number }}">
                         </div>
                         <br>
                         <div>
                             <label for="room_id">Room Number</label>
                             <select name="room_id">
                                 <option value="">==Select Room Number==</option>
-                                @foreach($room as $data)
-
-                                    <option value="{{ $data->id }}">{{ $data->room_num }}</option>
+                                @foreach($room_num_edit as $data)
+                                    @if($data->id==$border_edit->room_id)
+                                        <option value="{{ $data->id }}" selected=""> {{ $data->room_num }}</option>
+                                    @else
+                                        <option value="{{ $data->id }}">{{ $data->room_num }}</option>
+                                    @endif
                                 @endforeach
                             </select>
 

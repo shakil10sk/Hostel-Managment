@@ -103,6 +103,7 @@ class CartController extends Controller
         $remove=Cart::remove($rowId);
         return Redirect()->back();
     }
+    
     public function FinalInvoice(Request $request){
 
         $data=array();

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Room;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 
 class RoomController extends Controller
 {
@@ -68,7 +70,8 @@ class RoomController extends Controller
      */
     public function edit($id)
     {
-        //
+        $room_edit=DB::table('rooms')->where('id',$id)->first();
+        return view('frontend.room.edit',compact('room_edit'));
     }
 
     /**
@@ -80,7 +83,14 @@ class RoomController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data=array();
+        $data['room_num']=$request->room_num;
+        $data['floor_num']=$request->floor_num;
+        $data['status']=$request->status;
+        $update=DB::table('rooms')->where('id',$id)->update($data);
+        if($update){
+            return Redirect('/room/view');
+        }
     }
 
     /**
@@ -91,6 +101,8 @@ class RoomController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $delt=Room::find($id);
+        $delt->delete();
+        return Redirect('/room/view');
     }
 }

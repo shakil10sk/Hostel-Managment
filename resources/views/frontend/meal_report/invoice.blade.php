@@ -14,6 +14,65 @@
 </head>
 
 <body>
+     {{-- navber section --}}
+     <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center mx-auto">
+
+                <nav class="navbar navbar-expand-lg navbar-info bg-dark">
+                    {{-- <a class="navbar-brand" href="/">Public Hostel</a> --}}
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/border/create"><span
+                                        class="text-uppercase font-weight-bolder">Border Registraion</span></a></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/border/view"><span
+                                        class="text-uppercase font-weight-bolder">Border View</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/room/create"><span
+                                        class="text-uppercase font-weight-bolder">New Room ADD</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/room/view"><span
+                                        class="text-uppercase font-weight-bolder">View Room</span> </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/meals/create"><span
+                                        class="text-uppercase font-weight-bolder">ADD Meals</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/meals/view"><span
+                                        class="text-uppercase font-weight-bolder">View Meals</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/order/view"><span
+                                        class="text-uppercase font-weight-bolder">Order Meal</span></a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="/order/report"><span
+                                        class="text-uppercase font-weight-bolder">Your Order Report</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+
+            </div>
+        </div>
+    </div>
+    {{-- end Navbar --}}
 
     <div class="container">
         <div>
@@ -48,14 +107,10 @@
                                         <p class="m-t-5"><strong>Order Status: </strong> <span
                                                 class="label label-pink">Active</span></p>
                                         @php
-                                            // $order=DB::table('orders')->select('id')->first();
-                                            $i=1;
+                                            $i=0;
                                         @endphp
 
-                                        <p class="m-t-5"><strong>Order ID: </strong> #202100{{ ++$i }}
-                                            {{-- {{ $order++ }} --}}
-
-                                        </p>
+                                        <p class="m-t-5"><strong>Order ID: </strong> #202100{{ ++$i }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -176,8 +231,10 @@
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default waves-effect"
                                     data-dismiss="modal">Close</button>
+
                                 <button type="submit" class="btn btn-info waves-effect waves-light">Save
-                                    changes</button>
+                                    changes
+                                </button>
                             </div>
                         </div>
                     </div>

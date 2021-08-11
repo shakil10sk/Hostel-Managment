@@ -63,10 +63,10 @@ class BorderController extends Controller
         $store->nid_number=$request->nid_number;
         $store->room_id=$request->room_id;
         //  dd($store);
-        if(  $store->save()){
-            return redirect()->back()->with('success','Successfully Border Added');
+        if($store->save()){
+            return redirect('border/view')->with('success','Successfully Border Added');
         }else{
-            return redirect()->back()->with('error','Somtheing is Wrong .Please give information again');
+            return redirect('border/view')->with('error','Somtheing is Wrong .Please give information again');
         }
     }
 
@@ -132,10 +132,10 @@ class BorderController extends Controller
         $data->nid_number=$request->nid_number;
         $data->room_id=$request->room_id;
         //  dd($store);
-        if(  $data->save()){
-            return redirect()->back()->with('success','Successfully Border Updated');
+        if($data->update()){
+            return redirect('border/view')->with('success','Successfully Border Updated');
         }else{
-            return redirect()->back()->with('error','Somtheing is Wrong .Please give information again');
+            return redirect('border/view')->with('error','Nothing to update');
         }
     }
 

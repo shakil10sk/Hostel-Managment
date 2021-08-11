@@ -73,6 +73,27 @@
     <div class="container pt-5">
         <h4>View Meals Details</h4>
         <div class="row">
+            @if(Session::get('success'))
+            <div class="alert alert-success">
+                {{ Session::get('success') }}
+            </div>
+            @endif
+            @if(Session::get('error'))
+            <div class="alert alert-danger">
+                {{ Session::get('error') }}
+            </div>
+            @endif
+            @if($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
+
+
             <div class="col-md-12 mx-auto text-center">
                 <table class="table table-striped table-bordered">
                     <thead>

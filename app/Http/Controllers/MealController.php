@@ -84,9 +84,27 @@ class MealController extends Controller
         $data['meal_name']=$request->meal_name;
         $data['meal_price']=$request->meal_price;
         $update=DB::table('meals')->where('id',$id)->update($data);
+
         if($update){
-            return Redirect('/meals/view');
+            return redirect('/meals/view')->with('success','Successfully Meals  Updated');
+        }else{
+            return redirect('/meals/view')->with('error','Nothing to update');
         }
+
+
+        // if($update){
+        //     $notification=array(
+        //         'messege'=>'Successfully Meals Updated',
+        //         'alert-type'=>'success',
+        //     );
+        //     return Redirect('/meals/view')->with($notification);
+        // }else{
+        //     $notification=array(
+        //         'messege'=>'Nothing to update',
+        //         'alert-type'=>'error',
+        //     );
+        //     return Redirect()->back()->with($notification);
+        // }
     }
 
     /**

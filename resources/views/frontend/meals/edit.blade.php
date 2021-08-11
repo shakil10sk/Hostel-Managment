@@ -71,9 +71,8 @@
     {{-- end Navbar --}}
 
 
-    <h1> New Room ADD</h1>
-    <h4><a href="/">Home</a></h4>
-    <h4><a href="/room/view">Room View</a></h4>
+    <h1> Edit Meals </h1>
+
 
     <div class="conatainer p-lg-5">
         <div>
@@ -87,6 +86,18 @@
                         {{ Session::get('error') }}
                     </div>
             @endif
+            @if($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
+            {{-- @if(Session::has('message'))
+                <p class="alert alert-info">{{ Session::get('message') }}</p>
+            @endif --}}
            <form action="{{ url('meals/update/'.$meal_edit->id) }}" method="post">
                 @csrf
                 <div class="row">
